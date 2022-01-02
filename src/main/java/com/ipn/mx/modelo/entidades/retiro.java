@@ -7,8 +7,6 @@ package com.ipn.mx.modelo.entidades;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
-import java.text.DateFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,14 +16,10 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class deposito implements Serializable {
-
-    private int idDeposito;
-    private String conceptoDeposito;
-    private double montoDeposito;
-    private categoriaIngresos idCategoria;
+public class retiro implements Serializable{
+    private int idRetiro;
+    private String conceptoRetiro;
+    private double montoRetiro;
     Date Fecha;
-    Time Hora;
-    private int idCategori;
     
 }

@@ -15,7 +15,7 @@ import lombok.Data;
  */
 @Data
 public class depositoDTO implements Serializable {
-     private deposito entidad;
+    private deposito entidad;
      
      public depositoDTO(){
         entidad= new deposito();
@@ -27,8 +27,10 @@ public class depositoDTO implements Serializable {
         sb.append("Id Deposito: ").append(getEntidad().getIdDeposito()).append("\n");
         sb.append("Concepto Deposito: ").append(getEntidad().getConceptoDeposito()).append("\n");
         sb.append("Monto Deposito: ").append(getEntidad().getMontoDeposito()).append("\n");
-//        sb.append("Fecha: ").append(getEntidad().getTime()).append("\n");
-//        sb.append("Hora:  ").append(getEntidad().getDate()).append("\n");
+        sb.append("Id categoria:  ").append(getEntidad().getIdCategori()).append("\n");
+        sb.append("Fecha: ").append(getEntidad().getFecha()).append("\n");
+        sb.append("Hora:  ").append(getEntidad().getHora()).append("\n");
+        
         
         return sb.toString();
         
