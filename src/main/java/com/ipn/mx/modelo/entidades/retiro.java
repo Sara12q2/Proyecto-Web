@@ -7,6 +7,7 @@ package com.ipn.mx.modelo.entidades;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,5 +22,8 @@ public class retiro implements Serializable{
     private String conceptoRetiro;
     private double montoRetiro;
     Date Fecha;
+    Time Hora;
+    private int idCategori;
+    categoriaEgresos idCategoria;
     
 }

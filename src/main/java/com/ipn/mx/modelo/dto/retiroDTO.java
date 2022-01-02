@@ -26,8 +26,9 @@ public class retiroDTO {
         sb.append("Id Deposito: ").append(getEntidad().getIdRetiro()).append("\n");
         sb.append("Concepto Deposito: ").append(getEntidad().getConceptoRetiro()).append("\n");
         sb.append("Monto Deposito: ").append(getEntidad().getMontoRetiro()).append("\n");
-//        sb.append("Fecha: ").append(getEntidad().getTime()).append("\n");
-//        sb.append("Hora:  ").append(getEntidad().getDate()).append("\n");
+        sb.append("Id categoria:  ").append(getEntidad().getIdCategori()).append("\n");
+        sb.append("Fecha: ").append(getEntidad().getFecha()).append("\n");
+        sb.append("Hora:  ").append(getEntidad().getHora()).append("\n");
         
         return sb.toString();
         

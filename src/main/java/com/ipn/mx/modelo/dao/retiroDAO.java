@@ -22,10 +22,10 @@ import java.util.logging.Logger;
  * @author LENOVO
  */
 public class retiroDAO {
-     private static final String SQL_INSERT = "INSERT INTO retiro(\n" + "	 \"conceptoRetiro\", \"montoRetiro\")\n" + "	VALUES (?, ? );	";
-        private static final String SQL_UPDATE = "UPDATE retiro SET \"conceptoRetiro\"=?, \"montoRetiro\"=? WHERE \"idRetiro\"=?;";
-        private static final String SQL_SELECT = "SELECT \"idRetiro\", \"conceptoRetiro\", \"montoRetiro\"\n" + "	FROM retiro\n" + "WHERE \"idRetiro\" = ?;";
-        private static final String SQL_SELECT_ALL = "SELECT \"idRetiro\", \"conceptoRetiro\", \"montoRetiro\"\n" +"	FROM retiro;";
+        private static final String SQL_INSERT = "INSERT INTO deposito(\n" + "	 \"conceptoDeposito\",  \"montoDeposito\",\"fechaDeposito\", \"horaDeposito\", \"idCategoria\")\n" + "	VALUES (?, ?, ?, ?, ? );	";
+        private static final String SQL_UPDATE = "UPDATE deposito SET \"conceptoDeposito\"=?, \"montoDeposito\"=?, \"fechaDeposito\"=?, \"horaDeposito\"=?, \"idCategoria\"=? WHERE \"idDeposito\"=?;";
+        private static final String SQL_SELECT = "SELECT \"idDeposito\", \"conceptoDeposito\", \"montoDeposito\", \"fechaDeposito\", \"horaDeposito\", \"idCategoria\"\n" + "	FROM deposito\n" + "WHERE \"idDeposito\" = ?;";
+        private static final String SQL_SELECT_ALL = "SELECT \"idDeposito\", \"conceptoDeposito\", \"montoDeposito\", \"fechaDeposito\", \"horaDeposito\", \"idCategoria\"\n" + "	FROM deposito;";
 
         private Connection conexion;
 
@@ -52,6 +52,9 @@ public class retiroDAO {
                 ps = conexion.prepareCall(SQL_INSERT);
                 ps.setString(1, dto.getEntidad().getConceptoRetiro());
                 ps.setInt(2, (int) dto.getEntidad().getMontoRetiro());
+                ps.setInt(3, dto.getEntidad().getIdCategori());
+                ps.setDate(4, dto.getEntidad().getFecha());
+                ps.setTime(5, dto.getEntidad().getHora());
                 ps.executeUpdate();
 
             } finally {
@@ -73,6 +76,9 @@ public class retiroDAO {
                 ps.setString(1, dto.getEntidad().getConceptoRetiro());
                 ps.setInt(2, (int) dto.getEntidad().getMontoRetiro());
                 ps.setInt(3, dto.getEntidad().getIdRetiro());
+                 ps.setInt(4, dto.getEntidad().getIdCategori());
+                ps.setDate(5, dto.getEntidad().getFecha());
+                ps.setTime(6, dto.getEntidad().getHora());
 
                 ps.executeUpdate();
 
@@ -114,6 +120,9 @@ public class retiroDAO {
             dto.getEntidad().setIdRetiro(rs.getInt("idRetiro"));
             dto.getEntidad().setConceptoRetiro(rs.getString("conceptoRetiro"));
             dto.getEntidad().setMontoRetiro(rs.getInt("montoRetiro"));
+            dto.getEntidad().setIdCategori(rs.getInt("idCategori"));
+            dto.getEntidad().setFecha(rs.getDate("Fecha"));
+            dto.getEntidad().setHora(rs.getTime("Hora"));
             
             resultados.add(dto);
         }
@@ -126,7 +135,9 @@ public class retiroDAO {
         dto.getEntidad().setIdRetiro(1);
         dto.getEntidad().setConceptoRetiro("deposito por x cosa");
         dto.getEntidad().setMontoRetiro(500);
-
+//        dto.getEntidad().setFecha();
+//        dto.getEntidad().setHora();
+        dto.getEntidad().setIdCategori(1);
         retiroDAO dao = new retiroDAO();
 
         dao.create(dto);
